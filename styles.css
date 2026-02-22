@@ -1,0 +1,1219 @@
+/* ============================================
+   ميديكير - رعاية صحية تتمحور حول المريض
+   ============================================ */
+:root {
+  --color-bg: #f8f9fc;
+  --color-white: #ffffff;
+  --color-text: #1a1d2e;
+  --color-text-light: #5c6370;
+  --color-primary: #1a1d2e;
+  --color-purple: #6b5b95;
+  --color-purple-light: #8b7ab5;
+  --color-purple-lighter: #a89ad4;
+  --color-accent: #ede8f5;
+  --color-badge: #f5d547;
+  --color-badge-text: #1a1d2e;
+  --font-main: 'Tajawal', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 32px;
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.1);
+  --shadow-btn: 0 6px 20px rgba(107, 91, 149, 0.35);
+}
+
+/* الوضع الليلي */
+body.dark-mode {
+  --color-bg: #1a1d2e;
+  --color-white: #252836;
+  --color-text: #e8e8ed;
+  --color-text-light: #a0a4b0;
+  --color-primary: #a89ad4;
+  --color-purple: #b8a8e0;
+  --color-purple-light: #c8b8e8;
+  --color-purple-lighter: #d8c8f0;
+  --color-accent: #2d3142;
+  --color-badge: #e8c840;
+  --color-badge-text: #1a1d2e;
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.4);
+  --shadow-btn: 0 6px 20px rgba(168, 154, 212, 0.4);
+}
+
+body.dark-mode .hero {
+  background: linear-gradient(145deg, #252836 0%, #1e2130 50%, #252836 100%);
+}
+
+body.dark-mode .mobile-screen {
+  background: linear-gradient(180deg, #2d3142 0%, #252836 100%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-bg);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ============================================
+   الهيدر
+   ============================================ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--color-purple-light), var(--color-purple-lighter));
+  color: var(--color-white);
+  font-weight: 800;
+  font-size: 1.35rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(107, 91, 149, 0.25);
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--color-text);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+}
+
+.nav-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-light);
+  transition: color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--color-purple);
+}
+
+.nav-link.active {
+  color: var(--color-purple);
+  font-weight: 700;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.35rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Toggle - RTL */
+.toggle {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  background: var(--color-accent);
+  border-radius: 13px;
+  cursor: pointer;
+}
+
+.toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  width: 18px;
+  height: 18px;
+  background: var(--color-white);
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s;
+}
+
+.toggle-input:checked + .toggle-slider {
+  transform: translateX(-22px);
+}
+
+[dir="ltr"] .toggle-slider {
+  right: auto;
+  left: 4px;
+}
+[dir="ltr"] .toggle-input:checked + .toggle-slider {
+  transform: translateX(22px);
+}
+
+/* ============================================
+   قسم البطل (الهيرو)
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 440px;
+  padding: 4rem 2rem 3.5rem;
+  background: linear-gradient(145deg, #f2eeff 0%, #e8f2fa 45%, #f0eeff 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 820px;
+}
+
+.hero-title {
+  font-size: clamp(1.85rem, 4.2vw, 2.85rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.hero-text {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  max-width: 580px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.7;
+}
+
+.btn-hero {
+  background: linear-gradient(135deg, var(--color-purple-light), var(--color-purple-lighter));
+  color: var(--color-white);
+  padding: 0.9rem 2.25rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-btn);
+}
+
+.hero-dots {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.dot:first-child {
+  background: var(--color-purple);
+  box-shadow: 0 0 0 2px rgba(107, 91, 149, 0.3);
+}
+
+/* ============================================
+   القسم الاحترافي تحت الهيرو (معرض + إحصائيات)
+   ============================================ */
+.showcase {
+  padding: 0 2rem 4rem;
+  margin-top: -2rem;
+}
+
+.showcase-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  background: var(--color-white);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.showcase-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.gallery-side,
+.gallery-main {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-md);
+}
+
+.gallery-side {
+  aspect-ratio: 4 / 3;
+}
+
+.gallery-side img,
+.gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-main {
+  aspect-ratio: 4 / 3;
+  position: relative;
+}
+
+/* على الشاشات الواسعة: نفس الارتفاع لجميع صور المعرض */
+@media (min-width: 769px) {
+  .showcase-gallery {
+    grid-template-rows: 320px;
+    align-items: stretch;
+  }
+
+  .gallery-side,
+  .gallery-main {
+    aspect-ratio: auto;
+    min-height: 0;
+    height: 100%;
+  }
+}
+
+.showcase-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.showcase-badge {
+  padding: 0.6rem 1.25rem;
+  background: var(--color-badge);
+  color: var(--color-badge-text);
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.showcase-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1rem 0 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.stat-item {
+  text-align: center;
+  padding: 0.75rem;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-purple);
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+}
+
+.showcase-nav {
+  position: absolute;
+  left: 1.5rem;
+  bottom: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.showcase-nav:hover {
+  background: var(--color-accent);
+  transform: scale(1.05);
+}
+
+.showcase-nav-icon {
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid var(--color-text-light);
+  border-bottom: 2px solid var(--color-text-light);
+  transform: rotate(45deg);
+  margin-right: -3px;
+}
+
+[dir="rtl"] .showcase-nav {
+  left: auto;
+  right: 1.5rem;
+}
+
+[dir="rtl"] .showcase-nav-icon {
+  border-left: none;
+  border-right: 2px solid var(--color-text-light);
+  transform: rotate(-135deg);
+  margin-right: 0;
+  margin-left: -3px;
+}
+
+/* ============================================
+   شريكك الموثوق في الرعاية
+   ============================================ */
+.trusted-section {
+  padding: 4rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.trusted-intro {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.trusted-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: 0.6rem;
+}
+
+.trusted-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-light);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.trusted-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.trusted-card {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem 1.5rem;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.trusted-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+body.dark-mode .trusted-card {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.trusted-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-purple-light), var(--color-purple-lighter));
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.trusted-card-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.trusted-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.trusted-card-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  line-height: 1.65;
+}
+
+.trusted-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem 3rem;
+  padding: 1.75rem 2rem;
+  background: linear-gradient(135deg, rgba(139, 122, 181, 0.08), rgba(168, 154, 212, 0.12));
+  border-radius: var(--radius-xl);
+}
+
+body.dark-mode .trusted-stats {
+  background: linear-gradient(135deg, rgba(168, 154, 212, 0.15), rgba(139, 122, 181, 0.1));
+}
+
+.trusted-stat {
+  text-align: center;
+}
+
+.trusted-stat-value {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-purple);
+  margin-bottom: 0.2rem;
+}
+
+.trusted-stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+}
+
+.section-title {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* ============================================
+   عن أطبائنا الخبراء
+   ============================================ */
+.doctors-about {
+  padding: 4rem 2rem;
+  background: var(--color-white);
+}
+
+.doctors-about-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.doctors-about-content .section-title {
+  text-align: right;
+  margin-bottom: 1.5rem;
+}
+
+[dir="ltr"] .doctors-about-content .section-title {
+  text-align: left;
+}
+
+.doctors-about-content strong {
+  color: var(--color-purple);
+}
+
+.doctors-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.doctors-features li {
+  font-size: 1.05rem;
+  color: var(--color-text-light);
+  padding-right: 1.5rem;
+  position: relative;
+}
+
+[dir="ltr"] .doctors-features li {
+  padding-right: 0;
+  padding-left: 1.5rem;
+}
+
+.doctors-features li::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-purple-light);
+}
+
+[dir="ltr"] .doctors-features li::before {
+  right: auto;
+  left: 0;
+}
+
+.doctors-about-image {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.doctors-about-image img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+/* ============================================
+   بطاقات الأطباء
+   ============================================ */
+.doctors-profiles {
+  padding: 4rem 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, transparent 0%, rgba(107, 91, 149, 0.04) 50%, transparent 100%);
+}
+
+body.dark-mode .doctors-profiles {
+  background: linear-gradient(180deg, transparent 0%, rgba(168, 154, 212, 0.06) 50%, transparent 100%);
+}
+
+.doctors-profiles-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.doctors-profiles-header .section-title {
+  margin-bottom: 0.5rem;
+}
+
+.doctors-profiles-subtitle {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  font-weight: 500;
+}
+
+.profiles-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.profile-card {
+  width: 200px;
+  text-align: center;
+  flex-shrink: 0;
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+body.dark-mode .profile-card {
+  border-color: rgba(255,255,255,0.06);
+}
+
+.profile-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px);
+}
+
+.profile-avatar {
+  width: 128px;
+  height: 128px;
+  margin: 0 auto 1rem;
+  border-radius: var(--radius-xl);
+  object-fit: cover;
+  box-shadow: var(--shadow-md);
+  border: 3px solid var(--color-accent);
+}
+
+body.dark-mode .profile-avatar {
+  border-color: var(--color-accent);
+}
+
+.profile-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* ============================================
+   المدونة
+   ============================================ */
+.blog-section {
+  padding: 4rem 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.blog-section-desc {
+  text-align: center;
+  color: var(--color-text-light);
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.blog-card {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: block;
+  color: inherit;
+}
+
+.blog-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.blog-card-img {
+  display: block;
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+}
+
+.blog-card-body {
+  padding: 1.25rem;
+}
+
+.blog-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.blog-card-excerpt {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.blog-card-link {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-purple);
+}
+
+.blog-card:hover .blog-card-link {
+  text-decoration: underline;
+}
+
+/* صفحة المقال */
+.blog-post {
+  padding: 2rem 1.5rem 4rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.blog-article-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.blog-article-title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.blog-article-meta {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+}
+
+.blog-article-hero {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.blog-article-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.blog-article-body {
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.blog-article-body p {
+  margin-bottom: 1.25rem;
+}
+
+.blog-article-body h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 2rem 0 0.75rem;
+}
+
+.blog-article-footer {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.blog-article-footer .btn {
+  display: inline-flex;
+}
+
+/* ============================================
+   تواصل معنا
+   ============================================ */
+.contact-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(180deg, #f2eeff 0%, #ede8f5 100%);
+}
+
+body.dark-mode .contact-section {
+  background: linear-gradient(180deg, #1e2130 0%, #252836 100%);
+}
+
+.contact-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.contact-desc {
+  color: var(--color-text-light);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.contact-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem 2rem;
+  background: var(--color-white);
+  border-radius: var(--radius-2xl);
+  padding: 2rem 2.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+body.dark-mode .contact-box {
+  background: var(--color-white);
+}
+
+.contact-phone {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+
+.contact-phone:hover {
+  opacity: 0.9;
+}
+
+.contact-phone-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-purple-light), var(--color-purple-lighter));
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-phone-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.contact-phone-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  margin-bottom: 0.2rem;
+}
+
+.contact-phone-number {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-text);
+  direction: ltr;
+}
+
+body.dark-mode .contact-phone-number {
+  color: var(--color-text);
+}
+
+.contact-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+body.dark-mode .contact-divider {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.contact-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contact-social-label {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  font-weight: 600;
+}
+
+.contact-social-links {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.contact-social-link {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  color: var(--color-text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.contact-social-link:hover {
+  background: var(--color-purple-light);
+  color: var(--color-white);
+  transform: translateY(-3px);
+}
+
+body.dark-mode .contact-social-link {
+  background: var(--color-accent);
+  color: var(--color-text);
+}
+
+body.dark-mode .contact-social-link:hover {
+  background: var(--color-purple-light);
+  color: var(--color-white);
+}
+
+.contact-social-link.contact-whatsapp:hover {
+  background: #25d366;
+  color: #fff;
+}
+
+.contact-icon {
+  width: 22px;
+  height: 22px;
+}
+
+/* ============================================
+   الفوتر
+   ============================================ */
+.footer {
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  background: var(--color-white);
+}
+
+/* ============================================
+   متجاوب
+   ============================================ */
+@media (max-width: 1024px) {
+  .showcase-gallery {
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 1rem;
+  }
+
+  .trusted-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .doctors-about-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .doctors-about-content .section-title {
+    text-align: center;
+  }
+
+  .doctors-about-image {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .doctors-features {
+    align-items: center;
+  }
+
+  .doctors-features li {
+    padding-right: 0;
+    padding-left: 1.5rem;
+  }
+
+  .doctors-features li::before {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: -0.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
+
+  .nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 1.25rem;
+  }
+
+  .tagline {
+    display: none;
+  }
+
+  .hero {
+    min-height: 380px;
+    padding: 3rem 1.5rem 2.5rem;
+  }
+
+  .showcase {
+    padding: 0 1rem 3rem;
+    margin-top: -1rem;
+  }
+
+  .showcase-inner {
+    padding: 1rem;
+  }
+
+  .showcase-gallery {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .gallery-side:first-of-type {
+    display: none;
+  }
+
+  .gallery-side:last-of-type {
+    display: none;
+  }
+
+  .showcase-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .stat-value {
+    font-size: 1.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .showcase-nav {
+    bottom: 1.25rem;
+    right: 1rem;
+    left: auto;
+  }
+
+  .trusted-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .trusted-stats {
+    gap: 1.5rem 2rem;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .trusted-stat-value {
+    font-size: 1.5rem;
+  }
+
+  .contact-box {
+    flex-direction: column;
+    padding: 1.75rem 1.5rem;
+  }
+
+  .contact-divider {
+    width: 60px;
+    height: 1px;
+  }
+
+  .contact-phone {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-text {
+    font-size: 1.15rem;
+  }
+
+  .btn {
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9rem;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .profile-card {
+    width: 160px;
+  }
+
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .trusted-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .trusted-title {
+    font-size: 1.5rem;
+  }
+}
